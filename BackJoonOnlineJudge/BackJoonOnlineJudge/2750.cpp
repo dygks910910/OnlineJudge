@@ -31,20 +31,22 @@ void BubbleSort(vector<int>& v)
 
 void InsertionSort(vector<int>& v)
 {
-	int compNumber = 0;
-	for (int index = 0; index < v.size(); ++index)
+	for (int sortingTargetIndex = 1; sortingTargetIndex < v.size(); ++sortingTargetIndex)
 	{
-		if(index == 0)
-			continue;
-		compNumber = v[index];
-		for (int i = index; i == 0; --i)
+		for (int cmpTargetIndex = 0; cmpTargetIndex <= sortingTargetIndex - 1; ++cmpTargetIndex)
 		{
-
+			if (v[sortingTargetIndex] < v[cmpTargetIndex])
+			{
+				int tmp = v[sortingTargetIndex];
+				for (int a = sortingTargetIndex - 1; a >= cmpTargetIndex; --a)
+				{
+					v[a + 1] = v[a];
+				}
+				v[cmpTargetIndex] = tmp;
+				break;
+			}
 		}
-
 	}
-
-
 }
 #pragma endregion
 
@@ -52,7 +54,7 @@ int main()
 {
 	int inputCount = 0;
 	cin >> inputCount;
-	
+
 	vector<int> inputNumbers;
 	inputNumbers.reserve(inputCount);
 
@@ -62,7 +64,7 @@ int main()
 		cin >> tmpNumbers;
 		inputNumbers.push_back(tmpNumbers);
 	}
-	BubbleSort(inputNumbers);
+	InsertionSort(inputNumbers);
 	for (int i : inputNumbers)
 	{
 		cout << i << "\n";
