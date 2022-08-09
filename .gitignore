@@ -36,3 +36,6 @@
 *.idb
 *.tlog
 *.lastbuildstate
+Programmers/Programmers/Programmers/x64/
+Programmers/Programmers/.vs/
+*.pdb
